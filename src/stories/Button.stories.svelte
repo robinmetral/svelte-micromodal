@@ -14,8 +14,8 @@
     onClick: { action: "onClick" },
     primary: { control: "boolean" },
     size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      control: { type: "select" },
+      options: ["small", "medium", "large"],
     },
   }}
 />
