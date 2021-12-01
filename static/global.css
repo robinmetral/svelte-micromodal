@@ -19,3 +19,11 @@ textarea,
 select {
   font: inherit;
 }
+code,
+pre {
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0 4px;
+}
