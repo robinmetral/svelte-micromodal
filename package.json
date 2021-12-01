@@ -15,7 +15,7 @@
     "publish": "npm publish ./package"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
     "@types/micromodal": "^0.3.3",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
