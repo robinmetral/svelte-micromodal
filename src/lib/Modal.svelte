@@ -17,10 +17,9 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby={`${id}-title`}
-      {...$$restProps}
     >
       <header class="mm-header">
-        <h2 id={`${id}-title`}>{title}</h2>
+        <h2 class="mm-title" id={`${id}-title`}>{title}</h2>
         <button class="mm-close" aria-label={closeLabel} data-micromodal-close>
           {@html closeIcon}
         </button>
@@ -31,13 +30,11 @@
 </div>
 
 <style>
-  /* TODO: default animations */
-
   .mm-modal {
     display: none;
   }
 
-  /* Can we somehow avoid the :global() here? */
+  /* is-open is set by micromodal and shouldn't be purged */
   .mm-modal:global(.is-open) {
     display: block;
   }
@@ -57,10 +54,9 @@
 
   .mm-container {
     background-color: white;
-    padding: 1.5rem;
+    padding: 24px;
     width: 512px;
-    border-radius: 0.5rem;
-    /* handles high modals */
+    border-radius: 24px;
     max-height: 100vh;
     overflow-y: auto;
   }
@@ -74,9 +70,7 @@
   .mm-close {
     cursor: pointer;
     display: flex;
-    padding: 0.5rem;
-    border-radius: 100%;
-    /* reset */
+    color: currentColor;
     background: none;
     border: none;
   }
