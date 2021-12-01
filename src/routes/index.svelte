@@ -12,7 +12,7 @@
 <main>
   <h1>svelte-micromodal</h1>
   <p>
-    <code>svelte-micromodal</code> is a small
+    <code>svelte-micromodal</code> is a simple
     <a
       href="https://github.com/sveltejs/svelte"
       title="Svelte repository on GitHub">Svelte</a
