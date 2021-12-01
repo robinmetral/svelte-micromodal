@@ -11,7 +11,7 @@
 
 <h1>svelte-micromodal</h1>
 <button data-micromodal-trigger="modal-1">Do the thing</button>
-<Modal title="Wait a minute" id="modal-1">
+<Modal title="Wait a minute" id="modal-1" closeLabel="Close modal">
   <p>Are you sure you want to do this thing?</p>
   <div class="actions">
     <button on:click={() => console.log("Continued")}>Yes, continue</button>
