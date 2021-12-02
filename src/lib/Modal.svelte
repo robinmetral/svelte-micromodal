@@ -1,5 +1,6 @@
 <script lang="ts">
-  import MicroModal, { MicroModalConfig } from "micromodal";
+  import MicroModal from "micromodal";
+  import type { MicroModalConfig } from "micromodal";
   import { onMount } from "svelte";
 
   /**
@@ -25,7 +26,7 @@
   /**
    * Custom config passed to `MicroModal.init()`.
    */
-  export let mmConfig: MicroModalConfig = {};
+  export let mmConfig: MicroModalConfig = undefined;
 
   onMount(() => {
     MicroModal.init(mmConfig);
@@ -33,7 +34,7 @@
 </script>
 
 <div class="mm-modal" {id} aria-hidden="true">
-  <div class="mm-overlay" tabindex="-1" data-micromodal-close>
+  <div class="mm-overlay" tabindex="-1">
     <div
       class="mm-container"
       role="dialog"
@@ -42,7 +43,11 @@
     >
       <header class="mm-header">
         <h2 class="mm-title" id={`${id}-title`}>{title}</h2>
-        <button class="mm-close" aria-label={closeLabel} data-micromodal-close>
+        <button
+          class="mm-close"
+          aria-label={closeLabel}
+          on:click={() => MicroModal.close(id)}
+        >
           {@html closeIcon}
         </button>
       </header>
@@ -71,7 +76,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
   }
 
   .mm-container {
@@ -95,5 +99,6 @@
     color: currentColor;
     background: none;
     border: none;
+    padding: 0;
   }
 </style>
