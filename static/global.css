@@ -1,3 +1,4 @@
+/* reset */
 *,
 *::before,
 *::after {
@@ -7,9 +8,6 @@
   margin: 0;
 }
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
-    Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -19,11 +17,43 @@ textarea,
 select {
   font: inherit;
 }
+
+/* global styles */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    Arial, sans-serif;
+}
 code,
 pre {
   font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 0 4px;
+  border-radius: 4px;
+  padding: 0px 4px;
+}
+pre {
+  border-radius: 8px;
+  padding: 4px 8px;
+  white-space: pre-wrap;
+}
+button,
+.button {
+  color: currentColor;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  background: none;
+  padding: 4px 8px;
+  border: 2px solid currentColor;
+  border-radius: 99999px;
+}
+button:focus-visible,
+.button:focus-visible {
+  outline: 2px solid hsl(16, 100%, 58%);
+}
+/* https://css-tricks.com/the-focus-visible-trick/ */
+button:focus:not(:focus-visible) {
+  outline: none;
 }
