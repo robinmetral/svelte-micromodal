@@ -21,8 +21,9 @@
   export let closeLabel: string;
   /**
    * A custom SVG icon to replace the default close icon (from Feather Icons).
+   * Make sure it has `role="presentation"` to hide it from screen readers.
    */
-  export let closeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24"height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <line x1="18" y1="6" x2="6" y2="18" /> <line x1="6" y1="6" x2="18" y2="18" /></svg>`;
+  export let closeIcon = `<svg role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>`;
   /**
    * Custom config passed to `MicroModal.init()`.
    */
@@ -43,12 +44,10 @@
     >
       <header class="mm-header">
         <h2 class="mm-title" id={`${id}-title`}>{title}</h2>
-        <button
-          class="mm-close"
-          aria-label={closeLabel}
-          on:click={() => MicroModal.close(id)}
-        >
+        <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
+        <button class="mm-close" data-micromodal-close>
           {@html closeIcon}
+          <span class="sr-only">{closeLabel}</span>
         </button>
       </header>
       <slot />
@@ -100,5 +99,26 @@
     background: none;
     border: none;
     padding: 0;
+  }
+
+  .mm-close :global(svg) {
+    /**
+     * This ensures that a clicking the svg still fires onclick on the button.
+     * It looks like an issue with how micromodal deals with data attributes,
+     * since this is not a problem when using on:click(() => closeModal(id)).
+     */
+    pointer-events: none;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 </style>
