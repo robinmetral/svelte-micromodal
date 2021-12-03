@@ -14,7 +14,7 @@ const config = {
     // hydrate the <div id="svelte"> element in src/app.html
     target: "#svelte",
 
-    // alias `svelte-micromodal` to `lib` to make the example clearer
+    // alias `svelte-micromodal` to `lib` to make the examples clearer
     vite: {
       resolve: {
         alias: {

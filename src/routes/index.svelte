@@ -59,15 +59,15 @@
 
 <svelte:head>
   <title>
-    svelte-micromodal — a Svelte micromodal wrapper for creating light,
-    accessible dialogs
+    svelte-micromodal — a Svelte wrapper around Micromodal to create light,
+    accessible modal dialogs.
   </title>
 </svelte:head>
 
 <main>
   <h1>svelte-micromodal</h1>
   <p>
-    <code>svelte-micromodal</code> is a simple
+    <code>svelte-micromodal</code> is a
     <a
       href="https://github.com/sveltejs/svelte"
       title="Svelte repository on GitHub">Svelte</a
@@ -76,7 +76,7 @@
     <a
       href="https://github.com/Ghosh/micromodal"
       title="Micromodal repository on GitHub">Micromodal</a
-    >, a small JavaScript library for creating accessible modal dialogs.
+    > to create light, accessible modal dialogs.
   </p>
   <p>Here's a basic example:</p>
   <Basic />

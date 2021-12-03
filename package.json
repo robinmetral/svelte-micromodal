@@ -1,5 +1,6 @@
 {
   "name": "svelte-micromodal",
+  "description": "Svelte wrapper around Micromodal to create light, accessible modal dialogs",
   "version": "0.0.5",
   "scripts": {
     "dev": "svelte-kit dev",
