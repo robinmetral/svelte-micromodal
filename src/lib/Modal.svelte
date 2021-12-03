@@ -28,6 +28,26 @@
    * Custom config passed to `MicroModal.init()`.
    */
   export let mmConfig: MicroModalConfig = undefined;
+  /**
+   * Custom styles for the modal overlay.
+   */
+  export let overlayStyles: string = undefined;
+  /**
+   * Custom styles for the modal container.
+   */
+  export let containerStyles: string = undefined;
+  /**
+   * Custom styles for the modal header.
+   */
+  export let headerStyles: string = undefined;
+  /**
+   * Custom styles for the modal title.
+   */
+  export let titleStyles: string = undefined;
+  /**
+   * Custom styles for the modal's close button.
+   */
+  export let closeStyles: string = undefined;
 
   onMount(() => {
     MicroModal.init(mmConfig);
@@ -35,17 +55,28 @@
 </script>
 
 <div class="mm-modal" {id} aria-hidden="true">
-  <div class="mm-overlay" tabindex="-1">
+  <div class="mm-overlay" tabindex="-1" style={overlayStyles || undefined}>
     <div
       class="mm-container"
       role="dialog"
       aria-modal="true"
       aria-labelledby={`${id}-title`}
+      style={containerStyles || undefined}
     >
-      <header class="mm-header">
-        <h2 class="mm-title" id={`${id}-title`}>{title}</h2>
+      <header class="mm-header" style={headerStyles || undefined}>
+        <h2
+          class="mm-title"
+          id={`${id}-title`}
+          style={titleStyles || undefined}
+        >
+          {title}
+        </h2>
         <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
-        <button class="mm-close" data-micromodal-close>
+        <button
+          class="mm-close"
+          style={closeStyles || undefined}
+          data-micromodal-close
+        >
           {@html closeIcon}
           <span class="sr-only">{closeLabel}</span>
         </button>
