@@ -38,6 +38,9 @@ pre {
   padding: 4px 8px;
   white-space: pre-wrap;
 }
+a {
+  color: hsl(16deg, 100%, 43%);
+}
 button,
 .button {
   color: currentColor;
@@ -51,7 +54,7 @@ button,
 }
 button:focus-visible,
 .button:focus-visible {
-  outline: 2px solid hsl(16, 100%, 58%);
+  outline: 2px solid hsl(16deg, 100%, 57%);
 }
 /* https://css-tricks.com/the-focus-visible-trick/ */
 button:focus:not(:focus-visible) {
