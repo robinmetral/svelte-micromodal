@@ -1,6 +1,7 @@
 <script lang="ts">
   import Basic from "../components/Basic.svelte";
   import Config from "../components/Config.svelte";
+  import Styles from "../components/Styles.svelte";
 
   /* eslint-disable no-useless-escape */
   const basicMarkup = `<script>
@@ -21,7 +22,7 @@
     <button on:click={() => closeModal("modal-basic")}>Close modal</button>
   </footer>
 </Modal>`;
-  /* eslint-enable no-useless-escape */
+
   const configMarkup = `<button on:click={() => showModal("modal-config", {
   disableScroll: true,
   onShow: () => console.log("Called onShow()"),
@@ -30,6 +31,30 @@
 </button>
 
 <Modal id="modal-config" />`;
+
+  const stylesMarkup = `<Modal
+  title="A modal with dark mode"
+  id="modal-styles"
+  closeLabel="Close modal"
+  containerStyles="background-color:var(--color-bg);color:var(--color-text);"
+>
+  <p>This modal supports dark mode!</p>
+  <!-- ... -->
+</Modal>
+
+<\style>
+  :global(html) {
+    --color-bg: white;
+    --color-text: black;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(html) {
+      --color-bg: black;
+      --color-text: white;
+    }
+  }
+</style>`;
+  /* eslint-enable no-useless-escape */
 </script>
 
 <svelte:head>
@@ -91,7 +116,30 @@
   <p>Which results in:</p>
   <Config />
   <h2>Styling</h2>
-  <p>🚧</p>
+  <p>
+    The modal comes with little default UI, although enough to make it usable
+    out of the box.
+  </p>
+  <p>
+    It will also inherit some of your global styles, in order to make it
+    consistent with the rest of your UI (e.g. the modal's title will inherit any
+    global <code>h2</code> rules; the modal's copy will inherit the
+    <code>currentColor</code>).
+  </p>
+  <p>
+    If you need to customize the default styles, custom styles can be passed as
+    props to all modal DOM elements. You can also pass a custom <code
+      >closeIcon</code
+    > SVG to override the built-in icon.
+  </p>
+  <p>For example, here's how you could add dark mode support to a modal:</p>
+  <pre>{stylesMarkup}</pre>
+  <Styles />
+  <h2>Contact</h2>
+  Report issues, suggest improvements or simply ask questions on
+  <a href="https://github.com/robinmetral/svelte-micromodal"
+    >the GitHub repository</a
+  >. Thank you in advance!
 </main>
 
 <style>
