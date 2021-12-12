@@ -49,12 +49,18 @@
    */
   export let closeStyles: string = undefined;
 
+  let ref;
   onMount(() => {
+    // init micromodal
     MicroModal.init(mmConfig);
+    // move modal to portal
+    document.body.appendChild(ref);
+    // cleanup
+    return () => document.body.removeChild(ref);
   });
 </script>
 
-<div class="mm-modal" {id} aria-hidden="true">
+<div class="mm-modal" {id} aria-hidden="true" bind:this={ref}>
   <div
     class="mm-overlay"
     tabindex="-1"
