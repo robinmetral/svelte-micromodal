@@ -55,7 +55,12 @@
 </script>
 
 <div class="mm-modal" {id} aria-hidden="true">
-  <div class="mm-overlay" tabindex="-1" style={overlayStyles || undefined}>
+  <div
+    class="mm-overlay"
+    tabindex="-1"
+    style={overlayStyles || undefined}
+    data-micromodal-close
+  >
     <div
       class="mm-container"
       role="dialog"
