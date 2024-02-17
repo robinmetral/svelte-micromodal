@@ -35,6 +35,6 @@
   },
   "type": "module",
   "dependencies": {
-    "micromodal": "0.4.8"
+    "micromodal": "0.4.10"
   }
 }
