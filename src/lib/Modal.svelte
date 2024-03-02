@@ -65,35 +65,27 @@
     class="mm-overlay"
     tabindex="-1"
     style={overlayStyles || undefined}
-    data-micromodal-close
-  >
-    <div
-      class="mm-container"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={`${id}-title`}
-      style={containerStyles || undefined}
-    >
-      <header class="mm-header" style={headerStyles || undefined}>
-        <h2
-          class="mm-title"
-          id={`${id}-title`}
-          style={titleStyles || undefined}
-        >
-          {title}
-        </h2>
-        <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
-        <button
-          class="mm-close"
-          style={closeStyles || undefined}
-          data-micromodal-close
-        >
-          {@html closeIcon}
-          <span class="sr-only">{closeLabel}</span>
-        </button>
-      </header>
-      <slot />
-    </div>
+    data-micromodal-close />
+  <div
+    class="mm-container"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby={`${id}-title`}
+    style={containerStyles || undefined}>
+    <header class="mm-header" style={headerStyles || undefined}>
+      <h2 class="mm-title" id={`${id}-title`} style={titleStyles || undefined}>
+        {title}
+      </h2>
+      <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
+      <button
+        class="mm-close"
+        style={closeStyles || undefined}
+        data-micromodal-close>
+        {@html closeIcon}
+        <span class="sr-only">{closeLabel}</span>
+      </button>
+    </header>
+    <slot />
   </div>
 </div>
 
@@ -114,12 +106,13 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .mm-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
     padding: 24px;
     width: 512px;
