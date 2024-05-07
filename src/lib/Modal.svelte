@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { twMerge } from "tailwind-merge";
   import MicroModal from "micromodal";
   import type { MicroModalConfig } from "micromodal";
   import { onMount } from "svelte";
@@ -48,6 +49,26 @@
    * Custom styles for the modal's close button.
    */
   export let closeStyles: string = undefined;
+  /**
+   * Custom classes for the modal overlay.
+   */
+  export let overlayClass: string = undefined;
+  /**
+   * Custom classes for the modal container.
+   */
+  export let containerClass: string = undefined;
+  /**
+   * Custom classes for the modal header.
+   */
+  export let headerClass: string = undefined;
+  /**
+   * Custom classes for the modal title.
+   */
+  export let titleClass: string = undefined;
+  /**
+   * Custom classes for the modal's close button.
+   */
+  export let closeClass: string = undefined;
 
   let ref;
   onMount(() => {
@@ -58,27 +79,33 @@
     // cleanup
     return () => document.body.removeChild(ref);
   });
+
+  $: titleClass = twMerge("mm-title", titleClass);
+  $: closeClass = twMerge("mm-close", closeClass);
+  $: headerClass = twMerge("mm-header", headerClass);
+  $: containerClass = twMerge("mm-container", containerClass);
+  $: overlayClass = twMerge("mm-overlay", overlayClass);
 </script>
 
 <div class="mm-modal" {id} aria-hidden="true" bind:this={ref}>
   <div
-    class="mm-overlay"
+    class={overlayClass}
     tabindex="-1"
     style={overlayStyles || undefined}
     data-micromodal-close />
   <div
-    class="mm-container"
+    class={containerClass}
     role="dialog"
     aria-modal="true"
     aria-labelledby={`${id}-title`}
     style={containerStyles || undefined}>
-    <header class="mm-header" style={headerStyles || undefined}>
-      <h2 class="mm-title" id={`${id}-title`} style={titleStyles || undefined}>
+    <header class={headerClass} style={headerStyles || undefined}>
+      <h2 class={titleClass} id={`${id}-title`} style={titleStyles || undefined}>
         {title}
       </h2>
       <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
       <button
-        class="mm-close"
+        class={closeClass}
         style={closeStyles || undefined}
         data-micromodal-close>
         {@html closeIcon}

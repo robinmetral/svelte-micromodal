@@ -33,6 +33,7 @@
   },
   "type": "module",
   "dependencies": {
-    "micromodal": "0.4.10"
+    "micromodal": "0.4.10",
+    "tailwind-merge": "^2.3.0"
   }
 }
