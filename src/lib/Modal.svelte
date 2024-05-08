@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { twMerge } from "tailwind-merge";
   import MicroModal from "micromodal";
   import type { MicroModalConfig } from "micromodal";
   import { onMount } from "svelte";
@@ -80,32 +79,32 @@
     return () => document.body.removeChild(ref);
   });
 
-  $: titleClass = twMerge("mm-title", titleClass);
-  $: closeClass = twMerge("mm-close", closeClass);
-  $: headerClass = twMerge("mm-header", headerClass);
-  $: containerClass = twMerge("mm-container", containerClass);
-  $: overlayClass = twMerge("mm-overlay", overlayClass);
+  $: titleCls = "mm-title" + (titleClass ? ` ${titleClass}` : "");
+  $: closeCls = "mm-close" + (closeClass ? ` ${closeClass}` : "");
+  $: headerCls = "mm-header" + (headerClass ? ` ${headerClass}` : "");
+  $: containerCls = "mm-container" + (containerClass ? ` ${containerClass}` : "");
+  $: overlayCls = "mm-overlay" + (overlayClass ? ` ${overlayClass}` : "");
 </script>
 
 <div class="mm-modal" {id} aria-hidden="true" bind:this={ref}>
   <div
-    class={overlayClass}
+    class={overlayCls}
     tabindex="-1"
     style={overlayStyles || undefined}
     data-micromodal-close />
   <div
-    class={containerClass}
+    class={containerCls}
     role="dialog"
     aria-modal="true"
     aria-labelledby={`${id}-title`}
     style={containerStyles || undefined}>
-    <header class={headerClass} style={headerStyles || undefined}>
-      <h2 class={titleClass} id={`${id}-title`} style={titleStyles || undefined}>
+    <header class={headerCls} style={headerStyles || undefined}>
+      <h2 class={titleCls} id={`${id}-title`} style={titleStyles || undefined}>
         {title}
       </h2>
       <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
       <button
-        class={closeClass}
+        class={closeCls}
         style={closeStyles || undefined}
         data-micromodal-close>
         {@html closeIcon}
