@@ -37,6 +37,8 @@
   id="modal-styles"
   closeLabel="Close modal"
   containerStyles="background-color:var(--color-bg);color:var(--color-text);"
+  // or using classes (beware of specificity):
+  // containerClass="my-class"
 >
   <p>This modal supports dark mode!</p>
   <!-- ... -->
@@ -128,9 +130,9 @@
   </p>
   <p>
     If you need to customize the default styles, custom styles can be passed as
-    props to all modal DOM elements. You can also pass a custom <code
-      >closeIcon</code
-    > SVG to override the built-in icon.
+    props to all modal DOM elements, either via inline <code>style</code>s or
+    with <code>class</code>es. You can also pass a custom <code>closeIcon</code>
+    SVG to override the built-in icon.
   </p>
   <p>For example, here's how you could add dark mode support to a modal:</p>
   <pre>{stylesMarkup}</pre>
