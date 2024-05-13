@@ -37,8 +37,6 @@
   id="modal-styles"
   closeLabel="Close modal"
   containerStyles="background-color:var(--color-bg);color:var(--color-text);"
-  // or using classes (beware of specificity):
-  // containerClass="my-class"
 >
   <p>This modal supports dark mode!</p>
   <!-- ... -->
