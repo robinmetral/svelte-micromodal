@@ -79,34 +79,42 @@
     return () => document.body.removeChild(ref);
   });
 
-  $: titleCls = "mm-title" + (titleClass ? ` ${titleClass}` : "");
-  $: closeCls = "mm-close" + (closeClass ? ` ${closeClass}` : "");
-  $: headerCls = "mm-header" + (headerClass ? ` ${headerClass}` : "");
-  $: containerCls = "mm-container" + (containerClass ? ` ${containerClass}` : "");
-  $: overlayCls = "mm-overlay" + (overlayClass ? ` ${overlayClass}` : "");
+  $: titleClassList = "mm-title" + (titleClass ? ` ${titleClass}` : "");
+  $: closeClassList = "mm-close" + (closeClass ? ` ${closeClass}` : "");
+  $: headerClassList = "mm-header" + (headerClass ? ` ${headerClass}` : "");
+  $: containerClassList =
+    "mm-container" + (containerClass ? ` ${containerClass}` : "");
+  $: overlayClassList = "mm-overlay" + (overlayClass ? ` ${overlayClass}` : "");
 </script>
 
 <div class="mm-modal" {id} aria-hidden="true" bind:this={ref}>
   <div
-    class={overlayCls}
+    data-micromodal-close
     tabindex="-1"
+    class={overlayClassList}
     style={overlayStyles || undefined}
-    data-micromodal-close />
+  />
   <div
-    class={containerCls}
     role="dialog"
     aria-modal="true"
     aria-labelledby={`${id}-title`}
-    style={containerStyles || undefined}>
-    <header class={headerCls} style={headerStyles || undefined}>
-      <h2 class={titleCls} id={`${id}-title`} style={titleStyles || undefined}>
+    class={containerClassList}
+    style={containerStyles || undefined}
+  >
+    <header class={headerClassList} style={headerStyles || undefined}>
+      <h2
+        id={`${id}-title`}
+        class={titleClassList}
+        style={titleStyles || undefined}
+      >
         {title}
       </h2>
       <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
       <button
-        class={closeCls}
+        data-micromodal-close
+        class={closeClassList}
         style={closeStyles || undefined}
-        data-micromodal-close>
+      >
         {@html closeIcon}
         <span class="sr-only">{closeLabel}</span>
       </button>
