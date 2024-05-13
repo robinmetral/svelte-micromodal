@@ -48,6 +48,26 @@
    * Custom styles for the modal's close button.
    */
   export let closeStyles: string = undefined;
+  /**
+   * Custom classes for the modal overlay.
+   */
+  export let overlayClass: string = undefined;
+  /**
+   * Custom classes for the modal container.
+   */
+  export let containerClass: string = undefined;
+  /**
+   * Custom classes for the modal header.
+   */
+  export let headerClass: string = undefined;
+  /**
+   * Custom classes for the modal title.
+   */
+  export let titleClass: string = undefined;
+  /**
+   * Custom classes for the modal's close button.
+   */
+  export let closeClass: string = undefined;
 
   let ref;
   onMount(() => {
@@ -58,27 +78,33 @@
     // cleanup
     return () => document.body.removeChild(ref);
   });
+
+  $: titleCls = "mm-title" + (titleClass ? ` ${titleClass}` : "");
+  $: closeCls = "mm-close" + (closeClass ? ` ${closeClass}` : "");
+  $: headerCls = "mm-header" + (headerClass ? ` ${headerClass}` : "");
+  $: containerCls = "mm-container" + (containerClass ? ` ${containerClass}` : "");
+  $: overlayCls = "mm-overlay" + (overlayClass ? ` ${overlayClass}` : "");
 </script>
 
 <div class="mm-modal" {id} aria-hidden="true" bind:this={ref}>
   <div
-    class="mm-overlay"
+    class={overlayCls}
     tabindex="-1"
     style={overlayStyles || undefined}
     data-micromodal-close />
   <div
-    class="mm-container"
+    class={containerCls}
     role="dialog"
     aria-modal="true"
     aria-labelledby={`${id}-title`}
     style={containerStyles || undefined}>
-    <header class="mm-header" style={headerStyles || undefined}>
-      <h2 class="mm-title" id={`${id}-title`} style={titleStyles || undefined}>
+    <header class={headerCls} style={headerStyles || undefined}>
+      <h2 class={titleCls} id={`${id}-title`} style={titleStyles || undefined}>
         {title}
       </h2>
       <!-- we need to use the data attribute here to avoid the close button from getting focused as the first interactive element in the modal -->
       <button
-        class="mm-close"
+        class={closeCls}
         style={closeStyles || undefined}
         data-micromodal-close>
         {@html closeIcon}
